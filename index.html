@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<!--<div id="app">-->
+<!--    <p style="color: red" v-if="!message">Please write your info</p>-->
+<!--    <textarea name="" id="" cols="30" rows="10" v-model="message"></textarea>-->
+<!--    <br>-->
+<!--    {{message}}-->
+<!--    <br>-->
+<!--    <button type="submit" v-if="message" style="background-color: dodgerblue;height: 40px;width: 90px">Submit</button>-->
+
+<!--</div>-->
+<!--<div id="app">-->
+<!--    <button @click="counter" style="background-color: orangered;color: black;height: 40px;width: 90px">-->
+<!--        Counter-->
+<!--    </button>-->
+<!--    <br>-->
+<!--    <p style="background-color: dodgerblue">-->
+<!--    {{count}}-->
+<!--    </p>-->
+<!--</div>-->
+<div id="app">
+    <my-counter color="red" subject="LIKE"></my-counter>
+    <my-counter color="blue" subject="DISLIKE"></my-counter>
+    <br>
+</div>
+<template id="btn">
+    <div>
+        <button :style="'background-color:'+color" @click="count++"
+                style="height: 90px;width: 120px">
+            {{subject}} {{count}}
+        </button>
+    </div>
+</template>
+</body>
+</html>
+
+
+<script>
+    Vue.component('my-counter', {
+        template: '#btn',
+        props: ['subject', 'color'],
+        data: function () {
+            return {count: 0};
+        }
+    });
+    new Vue({
+        el: '#app',
+        data: {
+            // count: 0
+        }, methods: {
+            counter: function () {
+                return this.count += 1
+            }
+        }
+    })
+</script>
