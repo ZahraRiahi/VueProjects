@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--computed-->
+    <input type="text" v-model="points">
+    <p style="width: 90px;height: 120px;background-color: orange;
+    color: black">{{skill}}</p>
+
+    <!--watch-->
+    <h2 style="color: blue">{{fullName}}</h2>
+    <input type="text" v-model="first"><input type="text" v-model="last">
+    <h1 style="color: red">{{completeName}}</h1>
+</div>
+</body>
+</html>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            points: 50,
+            first: "Zahra",
+            last: "Riahi",
+            fullName: "Zahra Riahi"
+        },
+        computed: {
+            skill: function () {
+                if (this.points <= 50) {
+                    return "Mobtadi";
+                }
+                return "NaMoatabar";
+            },
+            completeName: function () {
+                return this.first + " " + this.last;
+            }
+        },
+        watch: {
+            first: function (first) {
+                this.fullName = first + " " + this.last;
+            },
+            last: function (last) {
+                this.fullName = this.first + " " + last;
+            }
+        }
+    })
+</script>
