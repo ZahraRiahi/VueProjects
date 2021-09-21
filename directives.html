@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Directives</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+<style>
+    [v-cloak] {
+        display: none;
+    }
+</style>
+<div id="app">
+    <!--    v-text-->
+    <h1 v-text="message"></h1>
+    <h2>{{message}}</h2>
+    <!--    v-if-->
+    <!--    v-else-->
+    <!--    v-else-if-->
+    <h3 v-if="shift=='morning'">Good Morning!</h3>
+    <h3 v-else-if="shift=='evening'">Good Evening!</h3>
+    <h3 v-else-if="shift=='night'">Good Night!</h3>
+    <h3 v-else>Good Time!</h3>
+    <!--    v-show-->
+    <h4 v-show="showing">Show me!</h4>
+    <h4 style="color: red" v-show="showing" v-text="message"></h4>
+    <!--    v-pre-->
+    <p v-pre>{{message}}</p>
+    <!--    v-model-->
+    <input type="text" v-model="letter">
+    <h5 style="color: blue" v-text="letter"></h5>
+    <!--    v-on===@-->
+    <button @click="counter()" type="button">{{count}}</button>
+    <br>
+    <!--    v-bind===:-->
+    <a :href="url" :title="title">{{url}}</a>
+    <!--    v-cloak-->
+    <p v-cloak>{{message}}</p><br>
+    <!--    v-html-->
+    <div v-html="myTag"></div>
+    <!--    v-for-->
+    <ul>
+        <li v-for="fruit in fruits" v-text="fruit"></li>
+    </ul>
+    <!--    v-once-->
+    <input type="text" v-model="myValue">
+    <h4 style="background-color: orange" v-once>{{myValue}}</h4>
+</div>
+</body>
+</html>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'Salam',
+            shift: 'night',
+            showing: true,
+            letter: 'chiloo',
+            count: 0,
+            url: 'https://parsclick.net/',
+            title: 'پارس کلیک',
+            myTag: '<h3 style="color:maroon">سلام دنیا</h3>',
+            fruits: ['سیب', 'پرتقال', 'هلو', 'هندوانه', 'خیار', 'گلابی', 'مور'],
+            myValue: 'Saeed'
+        },
+        methods: {
+            counter: function () {
+                return this.count++
+            }
+        }
+    })
+</script>
